@@ -1,7 +1,6 @@
 package crypto
 
 import (
-	"bytes"
 	"crypto/cipher"
 	"crypto/rand"
 	"crypto/sha256"
@@ -17,9 +16,7 @@ type blowfishCrypto struct {
 func (b blowfishCrypto) Encrypt(condition EncryptCondition) (EncryptResult, error) {
 
 	blockSize := b.cipher.BlockSize()
-	padding := blockSize - len(condition.PlainText)%blockSize
-	paddedPlainText := append([]byte(condition.PlainText), bytes.Repeat([]byte{byte(padding)}, padding)...)
-
+	paddedPlainText := Pad([]byte(condition.PlainText), blockSize)
 	// Tạo nonce ngẫu nhiên cho mã hóa
 	nonce := make([]byte, blockSize)
 	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
@@ -49,7 +46,7 @@ func (b blowfishCrypto) Decrypt(condition DecryptCondition) (DecryptResult, erro
 	}
 
 	// Tách IV và ciphertext
-	blockSize := blowfish.BlockSize
+	blockSize := b.cipher.BlockSize()
 	iv := cipherTextBytes[:blockSize]
 	cipherTextBytes = cipherTextBytes[blockSize:]
 

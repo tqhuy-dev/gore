@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	a, err := crypto.NewTwoFishCrypto("Key")
+	a, err := crypto.NewBlowfishCrypto("Key")
 	if err != nil {
 		panic(err)
 	}

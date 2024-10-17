@@ -16,7 +16,7 @@ type aesCrypto struct {
 func (a aesCrypto) Encrypt(condition EncryptCondition) (EncryptResult, error) {
 	// Đệm cho plainText để nó có độ dài là bội số của block size
 	plainTextBytes := []byte(condition.PlainText)
-	plainTextBytes = Pad(plainTextBytes, aes.BlockSize)
+	plainTextBytes = Pad(plainTextBytes, a.cipherBlock.BlockSize())
 
 	// Tạo vector khởi tạo (IV) ngẫu nhiên
 	iv := make([]byte, aes.BlockSize)
@@ -42,8 +42,8 @@ func (a aesCrypto) Decrypt(condition DecryptCondition) (DecryptResult, error) {
 	}
 
 	// Tách IV và ciphertext
-	iv := cipherTextBytes[:aes.BlockSize]
-	cipherTextBytes = cipherTextBytes[aes.BlockSize:]
+	iv := cipherTextBytes[:a.cipherBlock.BlockSize()]
+	cipherTextBytes = cipherTextBytes[a.cipherBlock.BlockSize():]
 
 	// Giải mã
 	plainTextBytes := make([]byte, len(cipherTextBytes))
