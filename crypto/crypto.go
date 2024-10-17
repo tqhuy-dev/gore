@@ -4,9 +4,28 @@ import (
 	"bytes"
 )
 
+type EncryptResult struct {
+	CipherText string
+	Nonce      []byte
+}
+
+type EncryptCondition struct {
+	PlainText string
+}
+
+type DecryptResult struct {
+	PlainText string
+	Nonce     []byte
+}
+
+type DecryptCondition struct {
+	CipherText string
+	Nonce      []byte
+}
+
 type IHandleCrypto interface {
-	Encrypt(plainText string) (string, error)
-	Decrypt(cipherText string) (string, error)
+	Encrypt(condition EncryptCondition) (EncryptResult, error)
+	Decrypt(condition DecryptCondition) (DecryptResult, error)
 }
 
 type TypeCrypto int

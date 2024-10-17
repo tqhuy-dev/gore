@@ -4,27 +4,24 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
+	"crypto/sha256"
 	"encoding/base64"
-	"errors"
-	"fmt"
 	"io"
 )
-
-const lenKey = 16
 
 type aesCrypto struct {
 	cipherBlock cipher.Block
 }
 
-func (a aesCrypto) Encrypt(plainText string) (string, error) {
+func (a aesCrypto) Encrypt(condition EncryptCondition) (EncryptResult, error) {
 	// Đệm cho plainText để nó có độ dài là bội số của block size
-	plainTextBytes := []byte(plainText)
+	plainTextBytes := []byte(condition.PlainText)
 	plainTextBytes = Pad(plainTextBytes, aes.BlockSize)
 
 	// Tạo vector khởi tạo (IV) ngẫu nhiên
 	iv := make([]byte, aes.BlockSize)
 	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
-		return "", err
+		return EncryptResult{}, err
 	}
 
 	// Mã hóa
@@ -33,13 +30,15 @@ func (a aesCrypto) Encrypt(plainText string) (string, error) {
 	mode.CryptBlocks(cipherText, plainTextBytes)
 
 	// Kết hợp IV với ciphertext để sử dụng khi giải mã
-	return base64.StdEncoding.EncodeToString(append(iv, cipherText...)), nil
+	return EncryptResult{
+		CipherText: base64.StdEncoding.EncodeToString(append(iv, cipherText...)),
+	}, nil
 }
 
-func (a aesCrypto) Decrypt(cipherText string) (string, error) {
-	cipherTextBytes, err := base64.StdEncoding.DecodeString(cipherText)
+func (a aesCrypto) Decrypt(condition DecryptCondition) (DecryptResult, error) {
+	cipherTextBytes, err := base64.StdEncoding.DecodeString(condition.CipherText)
 	if err != nil {
-		return "", err
+		return DecryptResult{}, err
 	}
 
 	// Tách IV và ciphertext
@@ -53,14 +52,12 @@ func (a aesCrypto) Decrypt(cipherText string) (string, error) {
 
 	// Xóa đệm
 	plainTextBytes = Unpad(plainTextBytes)
-	return string(plainTextBytes), nil
+	return DecryptResult{PlainText: string(plainTextBytes)}, nil
 }
 
 func NewAESCrypto(key string) (IHandleCrypto, error) {
-	if len(key) != lenKey {
-		return nil, errors.New(fmt.Sprintf("len key must be equal %d", lenKey))
-	}
-	block, err := aes.NewCipher([]byte(key))
+	key256 := sha256.Sum256([]byte(key))
+	block, err := aes.NewCipher(key256[:])
 	if err != nil {
 		return nil, err
 	}

@@ -6,19 +6,23 @@ import (
 )
 
 func main() {
-	c, err := crypto.NewTwoFishCrypto("myverystrongpasswordo32bitlength", "1234567812345678")
-	if err != nil {
-		panic(err)
-	}
-	d, err := c.Encrypt(`HuyTran`)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(d)
 
-	f, err := c.Decrypt(d)
+	a, err := crypto.NewTwoFishCrypto("Key")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(f)
+	r, err := a.Encrypt(crypto.EncryptCondition{PlainText: "HuyTran"})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(r.CipherText)
+
+	f, err := a.Decrypt(crypto.DecryptCondition{
+		CipherText: r.CipherText,
+		Nonce:      r.Nonce,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(f.PlainText)
 }

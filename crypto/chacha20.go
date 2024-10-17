@@ -1,43 +1,45 @@
 package crypto
 
 import (
-	"encoding/base64"
-	"golang.org/x/crypto/chacha20"
+	"crypto/cipher"
+	"crypto/rand"
+	"crypto/sha256"
+	"golang.org/x/crypto/chacha20poly1305"
+	"io"
 )
 
-type chachaCrypto struct {
-	chachaCipher *chacha20.Cipher
-	nonce        []byte
+type chacha20Crypto struct {
+	aead cipher.AEAD
 }
 
-func (c chachaCrypto) Encrypt(plainText string) (string, error) {
-	cipherText := make([]byte, len(plainText))
-	c.chachaCipher.XORKeyStream(cipherText, []byte(plainText))
-
-	// Kết hợp nonce và ciphertext để sử dụng khi giải mã
-	return base64.StdEncoding.EncodeToString(append(c.nonce[:], cipherText...)), nil
-}
-
-func (c chachaCrypto) Decrypt(cipherText string) (string, error) {
-	cipherTextBytes, err := base64.StdEncoding.DecodeString(cipherText)
-	if err != nil {
-		return "", err
+func (c chacha20Crypto) Encrypt(condition EncryptCondition) (EncryptResult, error) {
+	nonce := make([]byte, chacha20poly1305.NonceSizeX)
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return EncryptResult{}, err
 	}
-
-	// Tách nonce và ciphertext
-	cipherTextBytes = cipherTextBytes[12:]
-
-	plainText := make([]byte, len(cipherTextBytes))
-	c.chachaCipher.XORKeyStream(plainText, cipherTextBytes)
-
-	return string(plainText), nil
+	ciphertext := c.aead.Seal(nil, nonce, []byte(condition.PlainText), nil)
+	return EncryptResult{
+		CipherText: string(ciphertext),
+		Nonce:      nonce,
+	}, nil
 }
 
-func NewChaChaCrypto(key string, nonceKey string) (IHandleCrypto, error) {
-	nonce := []byte(nonceKey)
-	cipher, err := chacha20.NewUnauthenticatedCipher([]byte(key), nonce)
+func (c chacha20Crypto) Decrypt(condition DecryptCondition) (DecryptResult, error) {
+	plaintext, err := c.aead.Open(nil, condition.Nonce, []byte(condition.CipherText), nil)
+	if err != nil {
+		return DecryptResult{}, nil
+	}
+	return DecryptResult{
+		PlainText: string(plaintext),
+		Nonce:     condition.Nonce,
+	}, nil
+}
+
+func NewChacha20Crypto(key string) (IHandleCrypto, error) {
+	key256 := sha256.Sum256([]byte(key))
+	aead, err := chacha20poly1305.NewX(key256[:])
 	if err != nil {
 		return nil, err
 	}
-	return &chachaCrypto{chachaCipher: cipher, nonce: nonce}, nil
+	return &chacha20Crypto{aead: aead}, nil
 }
