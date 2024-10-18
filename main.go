@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	a, err := crypto.NewBlowfishCrypto("Key")
+	a, err := crypto.Factory(crypto.AES, "Key")
 	if err != nil {
 		panic(err)
 	}
