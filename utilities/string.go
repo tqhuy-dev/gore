@@ -246,3 +246,10 @@ func HashString(payload interface{}) (string, error) {
 	bs := h.Sum(nil)
 	return fmt.Sprintf("%x\n", bs), nil
 }
+
+func ReverseString(s string) (result string) {
+	for _, v := range s {
+		result = string(v) + result
+	}
+	return
+}

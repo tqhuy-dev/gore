@@ -25,3 +25,13 @@ func StructToJSONString(structData interface{}) (jsonString string, err error) {
 	jsonString = string(jsonBytes)
 	return
 }
+
+func InterfaceToStruct(source interface{}, des interface{}) error {
+
+	jsonBytes, err := json.Marshal(source)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(jsonBytes, des)
+	return err
+}
