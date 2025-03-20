@@ -1,5 +1,9 @@
 package utilities
 
+import (
+	"math/rand"
+)
+
 func Sum[T Integer | Float](arr []T) T {
 	var sum T
 	for _, ele := range arr {
@@ -28,4 +32,8 @@ func MeanBy[K any, T Integer | Float](arr []K, f func(ele K) T) T {
 		return 0
 	}
 	return SumBy(arr, f) / T(len(arr))
+}
+
+func RandomRange(min int, max int) int {
+	return rand.Intn(max-min+1) + min
 }
