@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Set the working directory to the specific application
-WORKDIR /app/example/redis-sentinel-app
+WORKDIR /app/example/logger-app
 
 # Build the Go binary with optimizations
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o main .
@@ -26,7 +26,7 @@ FROM gcr.io/distroless/static:latest
 WORKDIR /root/
 
 # Copy only the compiled binary from the build stage
-COPY --from=builder /app/example/redis-sentinel-app/main .
+COPY --from=builder /app/example/logger-app/main .
 
 # Expose ports for the application and Prometheus metrics
 EXPOSE 8081 2223
