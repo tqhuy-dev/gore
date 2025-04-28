@@ -5,8 +5,9 @@ import (
 	"strings"
 )
 
-type ISerializationTree interface {
-	SerializeBFS() (result string, err error)
+type ISerializationMethod interface {
+	Serialize() (result string, err error)
+	Deserialize(result string)
 }
 
 type defaultSerialization[T any] struct {
@@ -14,14 +15,19 @@ type defaultSerialization[T any] struct {
 	node           *NodeTree[T]
 }
 
-func NewDefaultSerialization[T any](emptyCharacter string, node *NodeTree[T]) ISerializationTree {
+func (ds *defaultSerialization[T]) Deserialize(result string) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func NewDefaultBFSSerialization[T any](emptyCharacter string, node *NodeTree[T]) ISerializationMethod {
 	return &defaultSerialization[T]{
 		emptyCharacter: emptyCharacter,
 		node:           node,
 	}
 }
 
-func (ds *defaultSerialization[T]) SerializeBFS() (result string, err error) {
+func (ds *defaultSerialization[T]) Serialize() (result string, err error) {
 	builder := strings.Builder{}
 	ds.node.BFS(func(nodeData *NodeTree[T]) bool {
 

@@ -42,15 +42,11 @@ func (node *NodeTree[T]) DFSRecursion() {
 	node.dfs(node)
 }
 
-func (node *NodeTree[T]) Serialization(typeof TreeSearchType, serialize ISerializationTree) (result string, err error) {
+func (node *NodeTree[T]) Serialization(serialize ISerializationMethod) (result string, err error) {
 	if serialize == nil {
-		serialize = NewDefaultSerialization[T](DefaultEmptyCharacter, node)
+		serialize = NewDefaultBFSSerialization[T](DefaultEmptyCharacter, node)
 	}
-	switch typeof {
-	case BFS:
-		return serialize.SerializeBFS()
-	}
-	return
+	return serialize.Serialize()
 }
 
 func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
@@ -106,6 +102,6 @@ func ExampleTree() {
 	nodeC.InsertRight(&nodeA)
 	nodeC.InsertLeft(&nodeB)
 
-	result, _ := nodeC.Serialization(BFS, nil)
+	result, _ := nodeC.Serialization(nil)
 	fmt.Println(result)
 }
