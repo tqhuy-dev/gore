@@ -1,0 +1,129 @@
+@startmindmap
+<style>
+mindmapDiagram{
+ .redis {
+    BackgroundColor Salmon
+ }
+ .mongodb {
+     BackgroundColor Green
+  }
+  .postgres {
+       BackgroundColor Aqua
+  }
+  .elastic {
+   BackgroundColor Orange
+  }
+  .golang {
+         BackgroundColor Aqua
+    }
+}
+</style>
++ Knowledge
+'----------Datastore-------------------'
+++[#Violet] Datastore
+'----------Redis-------------------'
++++ Redis <<redis>>
+++++ Applications <<redis>>
++++++ Caching <<redis>>
+++++++ String <<redis>>
+++++++ Hash <<redis>>
++++++++ Ziplist/Listpack <<redis>>
+++++++ Function/Lua script <<redis>>
+++++++ Pipeline/Multi <<redis>>
+++++++ JSON <<redis>>
+++++++ Benchmark/Use cases <<redis>>
++++++ Pub/sub <<redis>>
++++++ Streams <<redis>>
++++++ RediSearch <<redis>>
++++++ Benchmark/Use cases <<redis>>
+++++ Architecture <<redis>>
++++++ TTL index and LRU/LFU <<redis>>
++++++ Redis Protocol (RESP) <<redis>>
++++++ Level read/write concern <<redis>>
+++++ Strategies <<redis>>
++++++ Scalability <<redis>>
+++++++ Replication <<redis>>
+++++++ Sentinel <<redis>>
+++++++ Cluster <<redis>>
++++++ Sync DB <<redis>>
+'----------Mongo DB-------------------'
++++ MongoDB <<mongodb>>
+++++ Atlas <<mongodb>>
+++++ CAP Theory <<mongodb>>
++++++ Online Archive <<mongodb>>
+++++ Architecture <<mongodb>>
++++++ Administration <<mongodb>>
+++++++ Connection Pool <<mongodb>>
++++++ Security <<mongodb>>
++++++ Scalability <<mongodb>>
+++++++ Replication <<mongodb>>
++++++++ Election <<mongodb>>
++++++++ Read/Write Semantics <<mongodb>>
+++++++ Sharding <<mongodb>>
++++++ Indexes <<mongodb>>
+++++++ Types <<mongodb>>
++++++++ Single field <<mongodb>>
++++++++ Compound <<mongodb>>
++++++++ Multikey <<mongodb>>
++++++++ Wildcard <<mongodb>>
++++++++ Hashed <<mongodb>>
+++++++ Properties <<mongodb>>
++++++++ Hidden <<mongodb>>
++++++++ Partial <<mongodb>>
++++++++ Sparse <<mongodb>>
++++++++ TTL Indexes <<mongodb>>
++++++++ Unique <<mongodb>>
+++++++ Build Index <<mongodb>>
+++++++ ESR Rule <<mongodb>>
+'----------Mongo DB-------------------'
++++ PostgreSQL <<postgres>>
+'----------ElasticSearch-------------------'
++++ ElasticSearch <<elastic>>
+'----------Design System-------------------'
+++ Design System
+'----------Tech Stack-------------------'
+++ Tech Stack
+'----------Coding-------------------'
+-- Coding
+'----------Programming-------------------'
+--- Programming
+'----------Golang-------------------'
+---- Golang <<golang>>
+----- Runtime <<golang>>
+------ Scheduler <<golang>>
+------ Goroutine - Channel <<golang>>
+------- For - Select <<golang>>
+------- Mutex <<golang>>
+------- Worker pool <<golang>>
+------- Error <<golang>>
+-------- Deadlock <<golang>>
+-------- Data Race <<golang>>
+--------- Atomic <<golang>>
+------ Memory Management <<golang>>
+------- Memory Alignment <<golang>>
+----- Performance <<golang>>
+------ sync.pool <<golang>>
+------ recovery <<golang>>
+------ profiling <<golang>>
+------ mock test <<golang>>
+----- Applications <<golang>>
+------ RestAPI <<golang>>
+------- Gin-gonic <<golang>>
+------- Echo <<golang>>
+------ gRPC <<golang>>
+------- gRPC centralize <<golang>>
+------- stream <<golang>>
+------ Messages <<golang>>
+------- Kafka <<golang>>
+------- RabbitMQ <<golang>>
+----- Logging <<golang>>
+------ Zap <<golang>>
+----- Deeper <<golang>>
+------ Generic Function <<golang>>
+------ Type Casting <<golang>>
+-- Security
+-- Testing
+-- Devops
+-- AI
+
+@endmindmap
