@@ -1,12 +1,8 @@
-package dsa
+package tree
 
-import "fmt"
-
-type TreeSearchType int
-
-const (
-	BFS TreeSearchType = 1
-	DFS TreeSearchType = 2
+import (
+	"fmt"
+	"github.com/s-platform/gore/dsa"
 )
 
 type HandleNode[T any] func(nodeData T) bool
@@ -26,7 +22,7 @@ func (node *NodeTree[T]) InsertRight(nodeAdd *NodeTree[T]) {
 }
 
 func (node *NodeTree[T]) DFSWithStack() {
-	stackNode := InitStack[*NodeTree[T]]()
+	stackNode := dsa.InitStack[*NodeTree[T]]()
 	stackNode.Push(node)
 	for stackNode.Scan() {
 		cursorNode := stackNode.Pop()
@@ -46,9 +42,11 @@ func (node *NodeTree[T]) DFSRecursion() {
 	node.dfs(node)
 }
 
-func (node *NodeTree[T]) GenerateStringTree(data []T, typeof TreeSearchType) (result string) {
-
-	return
+func (node *NodeTree[T]) Serialization(typeof TreeSearchType, serialize ISerializationTree) (result string, err error) {
+	if serialize == nil {
+		serialize = NewDefaultSerialization[T](DefaultEmptyCharacter, node)
+	}
+	return serialize.SerializeBFS()
 }
 
 func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
@@ -60,7 +58,7 @@ func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
 }
 
 func (node *NodeTree[T]) BFS(handle HandleNode[*NodeTree[T]]) {
-	queue := InitQueue[*NodeTree[T]]()
+	queue := dsa.InitQueue[*NodeTree[T]]()
 	queue.Push(node)
 	for queue.Scan() {
 		nodeCursor := queue.Pop()
@@ -68,13 +66,8 @@ func (node *NodeTree[T]) BFS(handle HandleNode[*NodeTree[T]]) {
 		if isStop {
 			return
 		}
-		if nodeCursor == nil {
-			return
-		}
-		if nodeCursor.NoteLeft != nil {
+		if nodeCursor != nil {
 			queue.Push(nodeCursor.NoteLeft)
-		}
-		if nodeCursor.NoteRight != nil {
 			queue.Push(nodeCursor.NoteRight)
 		}
 	}
@@ -87,8 +80,14 @@ func ExampleTree() {
 	nodeA.InsertRight(&NodeTree[int]{
 		Data: 14,
 	})
+
+	nodeD := NodeTree[int]{
+		Data: 18,
+	}
+
 	nodeA.InsertLeft(&NodeTree[int]{
-		Data: 13,
+		Data:     13,
+		NoteLeft: &nodeD,
 	})
 	nodeB := NodeTree[int]{
 		Data: 7,
@@ -103,12 +102,6 @@ func ExampleTree() {
 	nodeC.InsertRight(&nodeA)
 	nodeC.InsertLeft(&nodeB)
 
-	nodeC.BFS(func(nodeData *NodeTree[int]) bool {
-		if nodeData == nil {
-			fmt.Println("#")
-		} else {
-			fmt.Println(nodeData.Data)
-		}
-		return false
-	})
+	result, _ := nodeC.Serialization(BFS, nil)
+	fmt.Println(result)
 }
