@@ -9,7 +9,7 @@ const (
 	DFS TreeSearchType = 2
 )
 
-type HandleNode[T any] func(nodeData T) error
+type HandleNode[T any] func(nodeData T) bool
 
 type NodeTree[T any] struct {
 	Data      T
@@ -46,9 +46,10 @@ func (node *NodeTree[T]) DFSRecursion() {
 	node.dfs(node)
 }
 
-//func (node *NodeTree[T]) GenerateStringTree(data []T, typeof TreeSearchType) string {
-//
-//}
+func (node *NodeTree[T]) GenerateStringTree(data []T, typeof TreeSearchType) (result string) {
+
+	return
+}
 
 func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
 	if root == nil {
@@ -58,12 +59,18 @@ func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
 	node.dfs(root.NoteRight)
 }
 
-func (node *NodeTree[T]) BFS() {
+func (node *NodeTree[T]) BFS(handle HandleNode[*NodeTree[T]]) {
 	queue := InitQueue[*NodeTree[T]]()
 	queue.Push(node)
 	for queue.Scan() {
 		nodeCursor := queue.Pop()
-		fmt.Println(nodeCursor.Data)
+		isStop := handle(nodeCursor)
+		if isStop {
+			return
+		}
+		if nodeCursor == nil {
+			return
+		}
 		if nodeCursor.NoteLeft != nil {
 			queue.Push(nodeCursor.NoteLeft)
 		}
@@ -86,9 +93,7 @@ func ExampleTree() {
 	nodeB := NodeTree[int]{
 		Data: 7,
 	}
-	nodeB.InsertRight(&NodeTree[int]{
-		Data: 12,
-	})
+
 	nodeB.InsertLeft(&NodeTree[int]{
 		Data: 11,
 	})
@@ -98,5 +103,12 @@ func ExampleTree() {
 	nodeC.InsertRight(&nodeA)
 	nodeC.InsertLeft(&nodeB)
 
-	nodeC.BFS()
+	nodeC.BFS(func(nodeData *NodeTree[int]) bool {
+		if nodeData == nil {
+			fmt.Println("#")
+		} else {
+			fmt.Println(nodeData.Data)
+		}
+		return false
+	})
 }
