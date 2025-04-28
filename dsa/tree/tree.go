@@ -46,7 +46,11 @@ func (node *NodeTree[T]) Serialization(typeof TreeSearchType, serialize ISeriali
 	if serialize == nil {
 		serialize = NewDefaultSerialization[T](DefaultEmptyCharacter, node)
 	}
-	return serialize.SerializeBFS()
+	switch typeof {
+	case BFS:
+		return serialize.SerializeBFS()
+	}
+	return
 }
 
 func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
