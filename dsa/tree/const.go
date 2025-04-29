@@ -1,10 +1,10 @@
 package tree
 
-type TreeSearchType int
+type SearchType int
 
 const (
-	BFS                   TreeSearchType = 1
-	DFS                   TreeSearchType = 2
-	DefaultEmptyCharacter                = "#"
-	DefaultSplitCharacter                = ","
+	BFS                   SearchType = 1
+	DFS                   SearchType = 2
+	DefaultEmptyCharacter            = "#"
+	DefaultSplitCharacter            = ","
 )

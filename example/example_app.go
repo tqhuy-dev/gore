@@ -7,5 +7,5 @@ import (
 var counter int32
 
 func main() {
-	tree.ExampleSerialize()
+	tree.ExampleTree()
 }

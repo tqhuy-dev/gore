@@ -38,8 +38,8 @@ func (node *NodeTree[T]) DFSWithStack() {
 	}
 }
 
-func (node *NodeTree[T]) DFSRecursion() {
-	node.dfs(node)
+func (node *NodeTree[T]) DFSRecursion(handle HandleNode[*NodeTree[T]]) {
+	node.dfs(node, handle)
 }
 
 func (node *NodeTree[T]) Serialization(serialize ISerializationMethod[T]) (result string, err error) {
@@ -60,12 +60,16 @@ func (node *NodeTree[T]) Deserialization(result string, serialize ISerialization
 	node.NoteRight = tmp.NoteRight
 }
 
-func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
+func (node *NodeTree[T]) dfs(root *NodeTree[T], handle HandleNode[*NodeTree[T]]) {
+	stop := handle(root)
+	if stop {
+		return
+	}
 	if root == nil {
 		return
 	}
-	node.dfs(root.NoteLeft)
-	node.dfs(root.NoteRight)
+	node.dfs(root.NoteLeft, handle)
+	node.dfs(root.NoteRight, handle)
 }
 
 func (node *NodeTree[T]) BFS(handle HandleNode[*NodeTree[T]]) {
@@ -113,7 +117,7 @@ func ExampleTree() {
 	nodeC.InsertRight(&nodeA)
 	nodeC.InsertLeft(&nodeB)
 
-	result, _ := nodeC.Serialization(nil)
+	result, _ := nodeC.Serialization(NewDFSSerialize(DefaultEmptyCharacter, &nodeC))
 	fmt.Println(result)
 }
 
