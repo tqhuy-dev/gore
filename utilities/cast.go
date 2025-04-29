@@ -1,6 +1,12 @@
 package utilities
 
-import "time"
+import (
+	"encoding/json"
+	"fmt"
+	"strconv"
+	"strings"
+	"time"
+)
 
 // ToBool casts an interface to a bool type.
 func ToBool(i interface{}) bool {
@@ -167,4 +173,57 @@ func ToIntSlice(i interface{}) []int {
 func ToDurationSlice(i interface{}) []time.Duration {
 	v, _ := ToDurationSliceE(i)
 	return v
+}
+
+func StringParseE[T any](input string) (T, error) {
+	var zero T
+	trimmed := strings.TrimSpace(input)
+
+	switch any(zero).(type) {
+	case bool:
+		if strings.EqualFold(trimmed, "true") {
+			return any(true).(T), nil
+		}
+		if strings.EqualFold(trimmed, "false") {
+			return any(false).(T), nil
+		}
+		return zero, fmt.Errorf("cannot parse %q as bool", input)
+
+	case int, int8, int16, int32, int64:
+		i, err := strconv.ParseInt(trimmed, 10, 64)
+		if err != nil {
+			return zero, err
+		}
+		return any(i).(T), nil
+
+	case uint, uint8, uint16, uint32, uint64:
+		u, err := strconv.ParseUint(trimmed, 10, 64)
+		if err != nil {
+			return zero, err
+		}
+		return any(u).(T), nil
+
+	case float32, float64:
+		f, err := strconv.ParseFloat(trimmed, 64)
+		if err != nil {
+			return zero, err
+		}
+		return any(f).(T), nil
+
+	case string:
+		return any(trimmed).(T), nil
+
+	default:
+		// Assume it's a struct or map --> parse JSON
+		err := json.Unmarshal([]byte(trimmed), &zero)
+		if err != nil {
+			return zero, err
+		}
+		return zero, nil
+	}
+}
+
+func StringParse[T any](input string) T {
+	result, _ := StringParseE[T](input)
+	return result
 }

@@ -42,11 +42,22 @@ func (node *NodeTree[T]) DFSRecursion() {
 	node.dfs(node)
 }
 
-func (node *NodeTree[T]) Serialization(serialize ISerializationMethod) (result string, err error) {
+func (node *NodeTree[T]) Serialization(serialize ISerializationMethod[T]) (result string, err error) {
 	if serialize == nil {
 		serialize = NewDefaultBFSSerialization[T](DefaultEmptyCharacter, node)
 	}
 	return serialize.Serialize()
+}
+
+func (node *NodeTree[T]) Deserialization(result string, serialize ISerializationMethod[T]) {
+	if serialize == nil {
+		serialize = NewDefaultBFSSerialization[T](DefaultEmptyCharacter, nil)
+	}
+	serialize.Deserialize(result)
+	tmp := serialize.GetNode()
+	node.Data = tmp.Data
+	node.NoteLeft = tmp.NoteLeft
+	node.NoteRight = tmp.NoteRight
 }
 
 func (node *NodeTree[T]) dfs(root *NodeTree[T]) {
@@ -104,4 +115,16 @@ func ExampleTree() {
 
 	result, _ := nodeC.Serialization(nil)
 	fmt.Println(result)
+}
+
+func ExampleSerialize() {
+	ex := "5,7,8,11,#,13,14,#,#,18,#,#,#,#,#"
+	nodeA := NodeTree[int64]{}
+	nodeA.Deserialization(ex, nil)
+	nodeA.BFS(func(nodeData *NodeTree[int64]) bool {
+		if nodeData != nil {
+			fmt.Println(nodeData.Data)
+		}
+		return false
+	})
 }
