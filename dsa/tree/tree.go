@@ -122,10 +122,10 @@ func ExampleTree() {
 }
 
 func ExampleSerialize() {
-	ex := "5,7,8,11,#,13,14,#,#,18,#,#,#,#,#"
+	ex := "1,2,4,#,#,5,7,#,#,#,3,6,#,#,#"
 	nodeA := NodeTree[int64]{}
-	nodeA.Deserialization(ex, nil)
-	nodeA.BFS(func(nodeData *NodeTree[int64]) bool {
+	nodeA.Deserialization(ex, NewDFSSerialize(DefaultEmptyCharacter, &nodeA))
+	nodeA.DFSRecursion(func(nodeData *NodeTree[int64]) bool {
 		if nodeData != nil {
 			fmt.Println(nodeData.Data)
 		}

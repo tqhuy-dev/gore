@@ -1,6 +1,7 @@
 package tree
 
 import (
+	"github.com/s-platform/gore/dsa"
 	"github.com/s-platform/gore/utilities"
 	"strings"
 )
@@ -27,7 +28,57 @@ func (d *dfsSerialize[T]) Serialize() (result string, err error) {
 }
 
 func (d *dfsSerialize[T]) Deserialize(result string) {
+	arr := strings.Split(result, DefaultSplitCharacter)
+	if len(arr) == 0 {
+		return
+	}
+	d.node = &NodeTree[T]{
+		Data: utilities.StringParse[T](arr[0]),
+	}
+	type tmp struct {
+		node    *NodeTree[T]
+		isLeft  bool
+		isRight bool
+	}
+	stack := dsa.InitStack[tmp]()
+	stack.Push(tmp{
+		node:    d.node,
+		isLeft:  false,
+		isRight: false,
+	})
+	for index := 1; index < len(arr); index++ {
+		cursor := stack.Pop()
+		var nextElement *NodeTree[T]
+		rePush := true
 
+		if arr[index] != DefaultEmptyCharacter {
+			nextElement = &NodeTree[T]{
+				Data: utilities.StringParse[T](arr[index]),
+			}
+		}
+
+		if cursor.isLeft == false {
+			cursor.node.NoteLeft = nextElement
+			cursor.isLeft = true
+		} else if cursor.isRight == false {
+			cursor.node.NoteRight = nextElement
+			cursor.isRight = true
+		}
+
+		if cursor.isRight && cursor.isLeft {
+			rePush = false
+		}
+		if rePush {
+			stack.Push(cursor)
+		}
+		if nextElement != nil {
+			stack.Push(tmp{
+				node:    nextElement,
+				isLeft:  false,
+				isRight: false,
+			})
+		}
+	}
 }
 
 func (d *dfsSerialize[T]) GetNode() *NodeTree[T] {
