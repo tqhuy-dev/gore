@@ -2,7 +2,7 @@ package tree
 
 import (
 	"fmt"
-	"github.com/s-platform/gore/dsa"
+	"github.com/tqhuy-dev/gore/dsa"
 )
 
 type HandleNode[T any] func(nodeData T) bool

@@ -2,7 +2,7 @@ package pool_app
 
 import (
 	"fmt"
-	"github.com/s-platform/gore/utilities"
+	"github.com/tqhuy-dev/gore/utilities"
 	"runtime"
 	"sync"
 )

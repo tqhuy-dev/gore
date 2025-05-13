@@ -1,8 +1,8 @@
 package tree
 
 import (
-	"github.com/s-platform/gore/dsa"
-	"github.com/s-platform/gore/utilities"
+	"github.com/tqhuy-dev/gore/dsa"
+	"github.com/tqhuy-dev/gore/utilities"
 	"strings"
 )
 

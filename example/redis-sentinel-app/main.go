@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/redis/go-redis/v9"
-	"github.com/s-platform/gore/go_monitor/openmetry"
+	"github.com/tqhuy-dev/gore/go_monitor/openmetry"
 	"net/http"
 )
 

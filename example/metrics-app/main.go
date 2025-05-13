@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/s-platform/gore/go_monitor/openmetry"
+	"github.com/tqhuy-dev/gore/go_monitor/openmetry"
 	"log"
 	"net/http"
 	"time"

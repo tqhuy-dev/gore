@@ -2,7 +2,7 @@ package dsa
 
 import (
 	"container/heap"
-	"github.com/s-platform/gore/utilities"
+	"github.com/tqhuy-dev/gore/utilities"
 	"math"
 	"sort"
 	"strconv"

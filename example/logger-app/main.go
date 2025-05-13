@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/s-platform/gore/go_monitor/openmetry"
+	"github.com/tqhuy-dev/gore/go_monitor/openmetry"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"net"

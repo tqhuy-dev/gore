@@ -2,7 +2,7 @@ package dsa
 
 import (
 	"fmt"
-	"github.com/s-platform/gore/utilities"
+	"github.com/tqhuy-dev/gore/utilities"
 )
 
 type Graph interface {
