@@ -66,7 +66,6 @@ type BaseRepo[T any, IdEntity any] interface {
 }
 
 type baseSQLImpl[T any, IdEntity any] struct {
-	Entity    T
 	NameTable string
 	cnn       pgx.Conn
 }
@@ -122,9 +121,8 @@ func (b *baseSQLImpl[T, IdEntity]) FindByCondition(ctx context.Context, conditio
 	return data, nil
 }
 
-func NewBaseRepo[T any, IdEntity any](entity T, nameTable string, cnn pgx.Conn) BaseRepo[T, IdEntity] {
+func NewBaseRepo[T any, IdEntity any](nameTable string, cnn pgx.Conn) BaseRepo[T, IdEntity] {
 	return &baseSQLImpl[T, IdEntity]{
-		Entity:    entity,
 		NameTable: nameTable,
 		cnn:       cnn,
 	}

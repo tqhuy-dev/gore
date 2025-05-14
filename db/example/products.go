@@ -15,22 +15,22 @@ type ProductsEntity struct {
 	Description *string
 }
 
-type ProductsRepository[T any, Id any] interface {
+type ProductsRepository interface {
 	ExampleFunc()
-	BaseRepo() db.BaseRepo[T, Id]
+	BaseRepo() db.BaseRepo[ProductsEntity, int]
 }
 
-type productRepo[T any, Id any] struct {
-	baseRepo db.BaseRepo[T, Id]
+type productRepo struct {
+	baseRepo db.BaseRepo[ProductsEntity, int]
 }
 
-func (p *productRepo[T, Id]) BaseRepo() db.BaseRepo[T, Id] {
+func (p *productRepo) BaseRepo() db.BaseRepo[ProductsEntity, int] {
 	return p.baseRepo
 }
 
-func (p *productRepo[T, Id]) ExampleFunc() {
+func (p *productRepo) ExampleFunc() {
 }
 
-func NewProductRepository[T any, Id any]() ProductsRepository[T, Id] {
-	return &productRepo[T, Id]{}
+func NewProductRepository() ProductsRepository {
+	return &productRepo{}
 }
