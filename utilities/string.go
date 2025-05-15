@@ -244,7 +244,7 @@ func HashString(payload interface{}) (string, error) {
 	}
 	h.Write(jsonString)
 	bs := h.Sum(nil)
-	return fmt.Sprintf("%x\n", bs), nil
+	return fmt.Sprintf("%x", bs), nil
 }
 
 func ReverseString(s string) (result string) {
