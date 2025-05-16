@@ -50,10 +50,10 @@ func Unpad(src []byte) []byte {
 	return src[:(length - unpadding)]
 }
 
-func Factory(crypto TypeCrypto, key string) (IHandleCrypto, error) {
+func Factory(crypto TypeCrypto, key string, nonce []byte) (IHandleCrypto, error) {
 	switch crypto {
 	case AES:
-		return NewAESCrypto(key)
+		return NewAESCrypto(key, nonce)
 	case BlowFish:
 		return NewBlowfishCrypto(key)
 	case TwoFish:
@@ -63,6 +63,6 @@ func Factory(crypto TypeCrypto, key string) (IHandleCrypto, error) {
 	case Chacha20:
 		return NewChacha20Crypto(key)
 	default:
-		return NewAESCrypto(key)
+		return NewAESCrypto(key, nonce)
 	}
 }
