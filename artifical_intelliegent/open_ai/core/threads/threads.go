@@ -29,7 +29,7 @@ func (thread *openAIThreads) GetListMessagesOnThread(ctx context.Context, reques
 }
 
 func (thread *openAIThreads) SendMessageThreads(ctx context.Context, request *SendMessageThreadsRequest) (*SendMessageThreadsResponse, error) {
-	path := fmt.Sprintf("%s/v1/threads/%s/messages", request.ThreadId, core.UrlOpenAI)
+	path := fmt.Sprintf("%s/v1/threads/%s/messages", core.UrlOpenAI, request.ThreadId)
 	var response SendMessageThreadsResponse
 	err := thread.BaseGPTOpenAI.GetHttpClient().Post(path, thread.BaseGPTOpenAI.GetHeaders(), request, &response)
 	if err != nil {

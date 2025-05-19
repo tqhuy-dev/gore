@@ -13,7 +13,7 @@ type CreateThreadResponseDto struct {
 }
 
 type RunThreadRequest struct {
-	ThreadId    string `json:"thread_id"`
+	ThreadId    string `json:"-"`
 	AssistantId string `json:"assistant_id"`
 }
 
@@ -29,7 +29,7 @@ type RetrieveThreadRunResponse struct {
 }
 
 type SendMessageThreadsRequest struct {
-	ThreadId string `json:"thread_id"`
+	ThreadId string `json:"-"`
 	Content  string `json:"content"`
 	Role     string `json:"role"`
 }

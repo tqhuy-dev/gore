@@ -41,7 +41,7 @@ type SendMessageToBotResponse struct {
 }
 
 type RunThreadsProcessRequest struct {
-	ThreadId    string `json:"thread_id"`
+	ThreadId    string `json:"-"`
 	AssistantId string `json:"assistant_id"`
 	TimeDelay   int    `json:"time_delay"`
 }
