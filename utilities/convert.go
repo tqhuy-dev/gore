@@ -2,17 +2,24 @@ package utilities
 
 import "encoding/json"
 
-func JSONStringToStruct(jsonString string, structData interface{}) error {
+func BytesToStruct(jsonBytes []byte, structData interface{}) error {
 
-	jsonBytes, err := json.Marshal(jsonString)
-	if err != nil {
-		return err
-	}
-	err = json.Unmarshal(jsonBytes, structData)
+	err := json.Unmarshal(jsonBytes, structData)
 	if err != nil {
 		return err
 	}
 
+	return nil
+}
+func MapToStruct(data map[string]interface{}, obj interface{}) error {
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(jsonData, &obj)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
