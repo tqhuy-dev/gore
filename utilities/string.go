@@ -253,3 +253,29 @@ func ReverseString(s string) (result string) {
 	}
 	return
 }
+
+type BuildQueryUri struct {
+	QueryUri string
+	Params   map[string]interface{}
+}
+
+func (b *BuildQueryUri) AddParam(key string, value interface{}) {
+	if b.Params == nil {
+		b.Params = make(map[string]interface{})
+	}
+	b.Params[key] = value
+}
+
+func (b *BuildQueryUri) Build() string {
+	if b.Params == nil {
+		return b.QueryUri
+	}
+	var arr []string
+	for key, value := range b.Params {
+		arr = append(arr, fmt.Sprintf("%s=%v", key, value))
+	}
+	if len(arr) > 0 {
+		b.QueryUri += "?" + strings.Join(arr, "&")
+	}
+	return b.QueryUri
+}
