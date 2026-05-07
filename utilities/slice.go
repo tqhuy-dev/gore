@@ -33,8 +33,8 @@ func Map[T any, R any](collection []T, iteratee func(item T, index int) R) []R {
 
 // FilterMap returns a slice which obtained after both filtering and mapping using the given callback function.
 // The callback function should return two values:
-//   - the result of the mapping operation and
-//   - whether the result element should be included or not.
+//   - the Result of the mapping operation and
+//   - whether the Result element should be included or not.
 //
 // Play: https://go.dev/play/p/-AuYXfy7opz
 func FilterMap[T any, R any](collection []T, callback func(item T, index int) (R, bool)) []R {
@@ -63,7 +63,7 @@ func FlatMap[T any, R any](collection []T, iteratee func(item T, index int) []R)
 	return result
 }
 
-// Reduce reduces collection to a value which is the accumulated result of running each element in collection
+// Reduce reduces collection to a value which is the accumulated Result of running each element in collection
 // through accumulator, where each successive invocation is supplied the return value of the previous.
 // Play: https://go.dev/play/p/R4UHXZNaaUG
 func Reduce[T any, R any](collection []T, accumulator func(agg R, item T, index int) R, initial R) R {
@@ -117,7 +117,7 @@ func Times[T any](count int, iteratee func(index int) T) []T {
 }
 
 // Uniq returns a duplicate-free version of an array, in which only the first occurrence of each element is kept.
-// The order of result values is determined by the order they occur in the array.
+// The order of Result values is determined by the order they occur in the array.
 // Play: https://go.dev/play/p/DTzbeXZ6iEN
 func Uniq[T comparable, Slice ~[]T](collection Slice) Slice {
 	result := make(Slice, 0, len(collection))
@@ -136,7 +136,7 @@ func Uniq[T comparable, Slice ~[]T](collection Slice) Slice {
 }
 
 // UniqBy returns a duplicate-free version of an array, in which only the first occurrence of each element is kept.
-// The order of result values is determined by the order they occur in the array. It accepts `iteratee` which is
+// The order of Result values is determined by the order they occur in the array. It accepts `iteratee` which is
 // invoked for each element in array to generate the criterion by which uniqueness is computed.
 // Play: https://go.dev/play/p/g42Z3QSb53u
 func UniqBy[T any, U comparable, Slice ~[]T](collection Slice, iteratee func(item T) U) Slice {
@@ -241,7 +241,7 @@ func Flatten[T any, Slice ~[]T](collection []Slice) Slice {
 	return result
 }
 
-// Interleave round-robin alternating input slices and sequentially appending value at index into result
+// Interleave round-robin alternating input slices and sequentially appending value at index into Result
 // Play: https://go.dev/play/p/-RJkTLQEDVt
 func Interleave[T any, Slice ~[]T](collections ...Slice) Slice {
 	if len(collections) == 0 {
@@ -428,7 +428,7 @@ func DropRightWhile[T any, Slice ~[]T](collection Slice, predicate func(item T) 
 }
 
 // DropByIndex drops elements from a slice or array by the index.
-// A negative index will drop elements from the end of the slice.
+// T1 negative index will drop elements from the end of the slice.
 // Play: https://go.dev/play/p/bPIH4npZRxS
 func DropByIndex[T any](collection []T, indexes ...int) []T {
 	initialSize := len(collection)
@@ -475,8 +475,8 @@ func Reject[T any, Slice ~[]T](collection Slice, predicate func(item T, index in
 
 // RejectMap is the opposite of FilterMap, this method returns a slice which obtained after both filtering and mapping using the given callback function.
 // The callback function should return two values:
-//   - the result of the mapping operation and
-//   - whether the result element should be included or not.
+//   - the Result of the mapping operation and
+//   - whether the Result element should be included or not.
 func RejectMap[T any, R any](collection []T, callback func(item T, index int) (R, bool)) []R {
 	result := []R{}
 
@@ -668,7 +668,7 @@ func IsSortedByKey[T any, K Ordered](collection []T, iteratee func(item T) K) bo
 	return true
 }
 
-// Splice inserts multiple elements at index i. A negative index counts back
+// Splice inserts multiple elements at index i. T1 negative index counts back
 // from the end of the slice. The helper is protected against overflow errors.
 // Play: https://go.dev/play/p/G5_GhkeSUBA
 func Splice[T any, Slice ~[]T](collection Slice, i int, elements ...T) Slice {

@@ -117,7 +117,7 @@ func FindUniques[T comparable, Slice ~[]T](collection Slice) Slice {
 }
 
 // FindUniquesBy returns a slice with all the unique elements of the collection.
-// The order of result values is determined by the order they occur in the array. It accepts `iteratee` which is
+// The order of Result values is determined by the order they occur in the array. It accepts `iteratee` which is
 // invoked for each element in array to generate the criterion by which uniqueness is computed.
 func FindUniquesBy[T any, U comparable, Slice ~[]T](collection Slice, iteratee func(item T) U) Slice {
 	isDupl := make(map[U]bool, len(collection))
@@ -147,7 +147,7 @@ func FindUniquesBy[T any, U comparable, Slice ~[]T](collection Slice, iteratee f
 }
 
 // FindDuplicates returns a slice with the first occurrence of each duplicated elements of the collection.
-// The order of result values is determined by the order they occur in the collection.
+// The order of Result values is determined by the order they occur in the collection.
 func FindDuplicates[T comparable, Slice ~[]T](collection Slice) Slice {
 	isDupl := make(map[T]bool, len(collection))
 
@@ -173,7 +173,7 @@ func FindDuplicates[T comparable, Slice ~[]T](collection Slice) Slice {
 }
 
 // FindDuplicatesBy returns a slice with the first occurrence of each duplicated elements of the collection.
-// The order of result values is determined by the order they occur in the array. It accepts `iteratee` which is
+// The order of Result values is determined by the order they occur in the array. It accepts `iteratee` which is
 // invoked for each element in array to generate the criterion by which uniqueness is computed.
 func FindDuplicatesBy[T any, U comparable, Slice ~[]T](collection Slice, iteratee func(item T) U) Slice {
 	isDupl := make(map[U]bool, len(collection))

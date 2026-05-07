@@ -4,14 +4,15 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
 	"math"
 	"math/rand/v2"
 	"regexp"
 	"strings"
 	"unicode"
 	"unicode/utf8"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var (
@@ -24,7 +25,7 @@ var (
 	AllCharset              = append(AlphanumericCharset, SpecialCharset...)
 
 	// bearer:disable go_lang_permissive_regex_validation
-	splitWordReg = regexp.MustCompile(`([a-z])([A-Z0-9])|([a-zA-Z])([0-9])|([0-9])([a-zA-Z])|([A-Z])([A-Z])([a-z])`)
+	splitWordReg = regexp.MustCompile(`([a-z])([T1-Z0-9])|([a-zA-Z])([0-9])|([0-9])([a-zA-Z])|([T1-Z])([T1-Z])([a-z])`)
 	// bearer:disable go_lang_permissive_regex_validation
 	splitNumberLetterReg = regexp.MustCompile(`([0-9])([a-zA-Z])`)
 	maximumCapacity      = math.MaxInt>>1 + 1

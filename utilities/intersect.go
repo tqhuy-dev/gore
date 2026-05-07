@@ -142,7 +142,7 @@ func Difference[T comparable, Slice ~[]T](list1 Slice, list2 Slice) (Slice, Slic
 }
 
 // Union returns all distinct elements from given collections.
-// result returns will not change the order of elements relatively.
+// Result returns will not change the order of elements relatively.
 func Union[T comparable, Slice ~[]T](lists ...Slice) Slice {
 	var capLen int
 

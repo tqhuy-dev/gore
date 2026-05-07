@@ -34,3 +34,13 @@ func LogicalOrString[T ~string](value T, elValue T) T {
 	}
 	return value
 }
+
+func LogicalError(err error, condition bool, errCondition error) error {
+	if err != nil {
+		return err
+	}
+	if condition && errCondition != nil {
+		return errCondition
+	}
+	return nil
+}

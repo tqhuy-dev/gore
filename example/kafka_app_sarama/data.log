@@ -1,0 +1,4 @@
+Service=go-apm-service TraceID=j/uc0WAShBuj9z/p4T6Iaw== Operation=readFunctionNested SpanID=ifY2nFmJcWw= ParentSpanID=earSNQVU2as=  Start=484139000 Duration=501213667
+ Tags=[key:"otel.scope.name"  v_str:"2222" key:"span.kind"  v_str:"internal" key:"otel.status_code"  v_str:"ERROR" key:"error"  v_type:BOOL  v_bool:true key:"otel.status_description"  v_str:"error"]
+Service=go-apm-service TraceID=j/uc0WAShBuj9z/p4T6Iaw== Operation=read-api SpanID=earSNQVU2as= ParentSpanID=  Start=484063000 Duration=502568500
+ Tags=[key:"otel.scope.name"  v_str:"2222" key:"span.kind"  v_str:"internal"]

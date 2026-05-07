@@ -1,6 +1,7 @@
 package utilities
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"sync"
@@ -8,68 +9,91 @@ import (
 )
 
 // PoolHandle định nghĩa hàm xử lý job
-type PoolHandle func(string) error
+type PoolHandle[Req any, Res any] func(ctx context.Context, req Req) (Res, error)
 
 // PoolOption chứa cấu hình của worker pool
 type PoolOption struct {
 	Name        string
 	WorkerLimit int
 	TotalTask   int
-}
-
-// ResultPool chứa kết quả xử lý
-type ResultPool struct {
-	Error error
+	Ctx         context.Context
 }
 
 // WorkerPool quản lý workers và job queue
-type WorkerPool struct {
+type WorkerPool[Req any, Res any] struct {
 	option  PoolOption
-	Jobs    chan string
-	Handler PoolHandle
-	result  chan ResultPool
+	Jobs    chan Req
+	Handler PoolHandle[Req, Res]
+	Results chan Res
+	Errors  chan error
 	wg      sync.WaitGroup
-}
-
-// Worker function: Nhận công việc từ jobs channel và xử lý
-func (wp *WorkerPool) worker(id int) {
-	for j := range wp.Jobs {
-		fmt.Println("Worker", id, "processing job:", j)
-		err := wp.Handler(j)
-		wp.result <- ResultPool{err}
-		fmt.Println("Worker", id, "finished job:", j)
-		wp.wg.Done() // Đánh dấu công việc đã hoàn thành
-	}
+	ctx     context.Context
+	cancel  context.CancelFunc
 }
 
 // NewWorkerPool: Khởi tạo worker pool
-func NewWorkerPool(option PoolOption, handle PoolHandle) *WorkerPool {
-	return &WorkerPool{
+func NewWorkerPool[Req any, Res any](option PoolOption, handle PoolHandle[Req, Res], Ctx context.Context) *WorkerPool[Req, Res] {
+	ctx, cancel := context.WithCancel(Ctx)
+	return &WorkerPool[Req, Res]{
 		option:  option,
-		Jobs:    make(chan string, option.TotalTask),
+		Jobs:    make(chan Req, option.TotalTask),
 		Handler: handle,
-		result:  make(chan ResultPool, option.TotalTask),
+		Results: make(chan Res, option.TotalTask),
+		Errors:  make(chan error, option.TotalTask),
+		ctx:     ctx,
+		cancel:  cancel,
 	}
 }
 
 // Start: Bắt đầu workers
-func (wp *WorkerPool) Start() {
+func (wp *WorkerPool[Req, Res]) Start() {
 	for w := 1; w <= wp.option.WorkerLimit; w++ {
-		go wp.worker(w)
+		go func(workerId int) {
+			wp.worker(workerId)
+		}(w)
 	}
 }
 
 // Push: Đẩy công việc vào queue
-func (wp *WorkerPool) Push(value string) {
-	wp.wg.Add(1) // Tăng counter trước khi thêm job
-	wp.Jobs <- value
+func (wp *WorkerPool[Req, Res]) Push(value Req) error {
+	select {
+	case <-wp.ctx.Done():
+		return wp.ctx.Err()
+	default:
+		wp.wg.Add(1)
+		wp.Jobs <- value
+		return nil
+	}
 }
 
 // Close: Đợi workers hoàn thành và đóng channels
-func (wp *WorkerPool) Close() {
-	wp.wg.Wait() // Đợi tất cả công việc hoàn thành
+func (wp *WorkerPool[Req, Res]) WaitAndClose() {
+	wp.wg.Wait()
 	close(wp.Jobs)
-	close(wp.result)
+	close(wp.Results)
+	close(wp.Errors)
+	wp.cancel()
+}
+
+// Worker function: Nhận công việc từ jobs channel và xử lý
+func (wp *WorkerPool[Req, Res]) worker(id int) {
+	for {
+		select {
+		case <-wp.ctx.Done():
+			return
+		case req, ok := <-wp.Jobs:
+			if !ok {
+				return
+			}
+
+			res, err := wp.Handler(wp.ctx, req)
+
+			wp.Results <- res
+			wp.Errors <- err
+
+			wp.wg.Done()
+		}
+	}
 }
 
 // Example sử dụng WorkerPool
@@ -79,23 +103,56 @@ func Example() {
 		WorkerLimit: 3,
 		TotalTask:   10,
 	}
+	type tmp struct {
+		int int
+	}
 
+	type tmpRes struct {
+		int int
+	}
+
+	results := make([]int, 0)
+	var resultWg sync.WaitGroup
+	resultWg.Add(1)
 	// Tạo worker pool với 3 workers
-	workerPool := NewWorkerPool(option, func(s string) error {
+	workerPool := NewWorkerPool[*tmp, *tmpRes](option, func(ctx context.Context, s *tmp) (*tmpRes, error) {
 		time.Sleep(2 * time.Second)
-		fmt.Println("Processing job:", s)
-		return errors.New("Processing error")
-	})
+		if s.int%2 == 0 {
+			return nil, errors.New("tmp error")
+		}
+		return &tmpRes{int: s.int * 2}, nil
+	}, context.Background())
 
 	workerPool.Start()
 
 	// Thêm 10 công việc
 	for i := 0; i < option.TotalTask; i++ {
-		workerPool.Push(fmt.Sprintf("Task %d", i))
+		if err := workerPool.Push(&tmp{int: i}); err != nil {
+			fmt.Println("Push error:", err)
+		}
 	}
 
-	// Đóng worker pool
-	workerPool.Close()
+	go func() {
+		defer resultWg.Done()
+		for r := range workerPool.Results {
+			if r == nil {
+				continue
+			}
+			results = append(results, r.int)
+		}
+	}()
 
+	go func() {
+		for e := range workerPool.Errors {
+			if e != nil {
+				fmt.Println("Error:", e)
+			}
+		}
+	}()
+
+	// Đóng worker pool
+	workerPool.WaitAndClose()
+	resultWg.Wait()
 	fmt.Println("All jobs completed. Run next process")
+	fmt.Println("Results:", results)
 }

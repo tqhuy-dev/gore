@@ -1,141 +1,118 @@
 package utilities
 
 // T2 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T2[A, B any](a A, b B) Tuple2[A, B] {
-	return Tuple2[A, B]{A: a, B: b}
+func T2[T0, T1 any](a T0, b T1) Tuple2[T0, T1] {
+	return Tuple2[T0, T1]{T0: a, T1: b}
 }
 
 // T3 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T3[A, B, C any](a A, b B, c C) Tuple3[A, B, C] {
-	return Tuple3[A, B, C]{A: a, B: b, C: c}
+func T3[T0, T1, T2 any](a T0, b T1, c T2) Tuple3[T0, T1, T2] {
+	return Tuple3[T0, T1, T2]{T0: a, T1: b, T2: c}
 }
 
 // T4 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T4[A, B, C, D any](a A, b B, c C, d D) Tuple4[A, B, C, D] {
-	return Tuple4[A, B, C, D]{A: a, B: b, C: c, D: d}
+func T4[T0, T1, T2, T3 any](a T0, b T1, c T2, d T3) Tuple4[T0, T1, T2, T3] {
+	return Tuple4[T0, T1, T2, T3]{T0: a, T1: b, T2: c, T3: d}
 }
 
 // T5 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T5[A, B, C, D, E any](a A, b B, c C, d D, e E) Tuple5[A, B, C, D, E] {
-	return Tuple5[A, B, C, D, E]{A: a, B: b, C: c, D: d, E: e}
+func T5[T0, T1, T2, T3, T4 any](a T0, b T1, c T2, d T3, e T4) Tuple5[T0, T1, T2, T3, T4] {
+	return Tuple5[T0, T1, T2, T3, T4]{T0: a, T1: b, T2: c, T3: d, T4: e}
 }
 
 // T6 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T6[A, B, C, D, E, F any](a A, b B, c C, d D, e E, f F) Tuple6[A, B, C, D, E, F] {
-	return Tuple6[A, B, C, D, E, F]{A: a, B: b, C: c, D: d, E: e, F: f}
+func T6[T0, T1, T2, T3, T4, T5 any](a T0, b T1, c T2, d T3, e T4, f T5) Tuple6[T0, T1, T2, T3, T4, T5] {
+	return Tuple6[T0, T1, T2, T3, T4, T5]{T0: a, T1: b, T2: c, T3: d, T4: e, T5: f}
 }
 
 // T7 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T7[A, B, C, D, E, F, G any](a A, b B, c C, d D, e E, f F, g G) Tuple7[A, B, C, D, E, F, G] {
-	return Tuple7[A, B, C, D, E, F, G]{A: a, B: b, C: c, D: d, E: e, F: f, G: g}
+func T7[T0, T1, T2, T3, T4, T5, T6 any](a T0, b T1, c T2, d T3, e T4, f T5, g T6) Tuple7[T0, T1, T2, T3, T4, T5, T6] {
+	return Tuple7[T0, T1, T2, T3, T4, T5, T6]{T0: a, T1: b, T2: c, T3: d, T4: e, T5: f, T6: g}
 }
 
 // T8 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T8[A, B, C, D, E, F, G, H any](a A, b B, c C, d D, e E, f F, g G, h H) Tuple8[A, B, C, D, E, F, G, H] {
-	return Tuple8[A, B, C, D, E, F, G, H]{A: a, B: b, C: c, D: d, E: e, F: f, G: g, H: h}
+func T8[T0, T1, T2, T3, T4, T5, T6, T7 any](a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7) Tuple8[T0, T1, T2, T3, T4, T5, T6, T7] {
+	return Tuple8[T0, T1, T2, T3, T4, T5, T6, T7]{T0: a, T1: b, T2: c, T3: d, T4: e, T5: f, T6: g, T7: h}
 }
 
 // T9 creates a tuple from a list of values.
-// Play: https://go.dev/play/p/IllL3ZO4BQm
-func T9[A, B, C, D, E, F, G, H, I any](a A, b B, c C, d D, e E, f F, g G, h H, i I) Tuple9[A, B, C, D, E, F, G, H, I] {
-	return Tuple9[A, B, C, D, E, F, G, H, I]{A: a, B: b, C: c, D: d, E: e, F: f, G: g, H: h, I: i}
+func T9[T0, T1, T2, T3, T4, T5, T6, T7, T8 any](a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7, i T8) Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8] {
+	return Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8]{T0: a, T1: b, T2: c, T3: d, T4: e, T5: f, T6: g, T7: h, T8: i}
 }
 
 // Unpack2 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack2[A, B any](tuple Tuple2[A, B]) (A, B) {
-	return tuple.A, tuple.B
+func Unpack2[T0, T1 any](tuple Tuple2[T0, T1]) (T0, T1) {
+	return tuple.T0, tuple.T1
 }
 
 // Unpack3 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack3[A, B, C any](tuple Tuple3[A, B, C]) (A, B, C) {
-	return tuple.A, tuple.B, tuple.C
+func Unpack3[T0, T1, T2 any](tuple Tuple3[T0, T1, T2]) (T0, T1, T2) {
+	return tuple.T0, tuple.T1, tuple.T2
 }
 
 // Unpack4 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack4[A, B, C, D any](tuple Tuple4[A, B, C, D]) (A, B, C, D) {
-	return tuple.A, tuple.B, tuple.C, tuple.D
+func Unpack4[T0, T1, T2, T3 any](tuple Tuple4[T0, T1, T2, T3]) (T0, T1, T2, T3) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3
 }
 
 // Unpack5 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack5[A, B, C, D, E any](tuple Tuple5[A, B, C, D, E]) (A, B, C, D, E) {
-	return tuple.A, tuple.B, tuple.C, tuple.D, tuple.E
+func Unpack5[T0, T1, T2, T3, T4 any](tuple Tuple5[T0, T1, T2, T3, T4]) (T0, T1, T2, T3, T4) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3, tuple.T4
 }
 
 // Unpack6 returns values contained in tuple.
 // Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack6[A, B, C, D, E, F any](tuple Tuple6[A, B, C, D, E, F]) (A, B, C, D, E, F) {
-	return tuple.A, tuple.B, tuple.C, tuple.D, tuple.E, tuple.F
+func Unpack6[T0, T1, T2, T3, T4, T5 any](tuple Tuple6[T0, T1, T2, T3, T4, T5]) (T0, T1, T2, T3, T4, T5) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3, tuple.T4, tuple.T5
 }
 
 // Unpack7 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack7[A, B, C, D, E, F, G any](tuple Tuple7[A, B, C, D, E, F, G]) (A, B, C, D, E, F, G) {
-	return tuple.A, tuple.B, tuple.C, tuple.D, tuple.E, tuple.F, tuple.G
+func Unpack7[T0, T1, T2, T3, T4, T5, T6 any](tuple Tuple7[T0, T1, T2, T3, T4, T5, T6]) (T0, T1, T2, T3, T4, T5, T6) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3, tuple.T4, tuple.T5, tuple.T6
 }
 
 // Unpack8 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack8[A, B, C, D, E, F, G, H any](tuple Tuple8[A, B, C, D, E, F, G, H]) (A, B, C, D, E, F, G, H) {
-	return tuple.A, tuple.B, tuple.C, tuple.D, tuple.E, tuple.F, tuple.G, tuple.H
+func Unpack8[T0, T1, T2, T3, T4, T5, T6, T7 any](tuple Tuple8[T0, T1, T2, T3, T4, T5, T6, T7]) (T0, T1, T2, T3, T4, T5, T6, T7) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3, tuple.T4, tuple.T5, tuple.T6, tuple.T7
 }
 
 // Unpack9 returns values contained in tuple.
-// Play: https://go.dev/play/p/xVP_k0kJ96W
-func Unpack9[A, B, C, D, E, F, G, H, I any](tuple Tuple9[A, B, C, D, E, F, G, H, I]) (A, B, C, D, E, F, G, H, I) {
-	return tuple.A, tuple.B, tuple.C, tuple.D, tuple.E, tuple.F, tuple.G, tuple.H, tuple.I
+func Unpack9[T0, T1, T2, T3, T4, T5, T6, T7, T8 any](tuple Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8]) (T0, T1, T2, T3, T4, T5, T6, T7, T8) {
+	return tuple.T0, tuple.T1, tuple.T2, tuple.T3, tuple.T4, tuple.T5, tuple.T6, tuple.T7, tuple.T8
 }
 
-// Zip2 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip2[A, B any](a []A, b []B) []Tuple2[A, B] {
+func Zip2[T0, T1 any](a []T0, b []T1) []Tuple2[T0, T1] {
 	size := Max([]int{len(a), len(b)})
 
-	result := make([]Tuple2[A, B], 0, size)
+	result := make([]Tuple2[T0, T1], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
 		_b, _ := Nth(b, index)
 
-		result = append(result, Tuple2[A, B]{
-			A: _a,
-			B: _b,
+		result = append(result, Tuple2[T0, T1]{
+			T0: _a,
+			T1: _b,
 		})
 	}
 
 	return result
 }
 
-// Zip3 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip3[A, B, C any](a []A, b []B, c []C) []Tuple3[A, B, C] {
+func Zip3[T0, T1, T2 any](a []T0, b []T1, c []T2) []Tuple3[T0, T1, T2] {
 	size := Max([]int{len(a), len(b), len(c)})
 
-	result := make([]Tuple3[A, B, C], 0, size)
+	result := make([]Tuple3[T0, T1, T2], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
 		_b, _ := Nth(b, index)
 		_c, _ := Nth(c, index)
 
-		result = append(result, Tuple3[A, B, C]{
-			A: _a,
-			B: _b,
-			C: _c,
+		result = append(result, Tuple3[T0, T1, T2]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
 		})
 	}
 
@@ -145,11 +122,11 @@ func Zip3[A, B, C any](a []A, b []B, c []C) []Tuple3[A, B, C] {
 // Zip4 creates a slice of grouped elements, the first of which contains the first elements
 // of the given arrays, the second of which contains the second elements of the given arrays, and so on.
 // When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip4[A, B, C, D any](a []A, b []B, c []C, d []D) []Tuple4[A, B, C, D] {
+// Play: https://go.dev/play/p/jujaT06T6aJTp
+func Zip4[T0, T1, T2, T3 any](a []T0, b []T1, c []T2, d []T3) []Tuple4[T0, T1, T2, T3] {
 	size := Max([]int{len(a), len(b), len(c), len(d)})
 
-	result := make([]Tuple4[A, B, C, D], 0, size)
+	result := make([]Tuple4[T0, T1, T2, T3], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -157,25 +134,21 @@ func Zip4[A, B, C, D any](a []A, b []B, c []C, d []D) []Tuple4[A, B, C, D] {
 		_c, _ := Nth(c, index)
 		_d, _ := Nth(d, index)
 
-		result = append(result, Tuple4[A, B, C, D]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
+		result = append(result, Tuple4[T0, T1, T2, T3]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
 		})
 	}
 
 	return result
 }
 
-// Zip5 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip5[A, B, C, D, E any](a []A, b []B, c []C, d []D, e []E) []Tuple5[A, B, C, D, E] {
+func Zip5[T0, T1, T2, T3, T4 any](a []T0, b []T1, c []T2, d []T3, e []T4) []Tuple5[T0, T1, T2, T3, T4] {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e)})
 
-	result := make([]Tuple5[A, B, C, D, E], 0, size)
+	result := make([]Tuple5[T0, T1, T2, T3, T4], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -184,26 +157,22 @@ func Zip5[A, B, C, D, E any](a []A, b []B, c []C, d []D, e []E) []Tuple5[A, B, C
 		_d, _ := Nth(d, index)
 		_e, _ := Nth(e, index)
 
-		result = append(result, Tuple5[A, B, C, D, E]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
-			E: _e,
+		result = append(result, Tuple5[T0, T1, T2, T3, T4]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
+			T4: _e,
 		})
 	}
 
 	return result
 }
 
-// Zip6 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip6[A, B, C, D, E, F any](a []A, b []B, c []C, d []D, e []E, f []F) []Tuple6[A, B, C, D, E, F] {
+func Zip6[T0, T1, T2, T3, T4, T5 any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5) []Tuple6[T0, T1, T2, T3, T4, T5] {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f)})
 
-	result := make([]Tuple6[A, B, C, D, E, F], 0, size)
+	result := make([]Tuple6[T0, T1, T2, T3, T4, T5], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -213,27 +182,23 @@ func Zip6[A, B, C, D, E, F any](a []A, b []B, c []C, d []D, e []E, f []F) []Tupl
 		_e, _ := Nth(e, index)
 		_f, _ := Nth(f, index)
 
-		result = append(result, Tuple6[A, B, C, D, E, F]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
-			E: _e,
-			F: _f,
+		result = append(result, Tuple6[T0, T1, T2, T3, T4, T5]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
+			T4: _e,
+			T5: _f,
 		})
 	}
 
 	return result
 }
 
-// Zip7 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip7[A, B, C, D, E, F, G any](a []A, b []B, c []C, d []D, e []E, f []F, g []G) []Tuple7[A, B, C, D, E, F, G] {
+func Zip7[T0, T1, T2, T3, T4, T5, T6 any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6) []Tuple7[T0, T1, T2, T3, T4, T5, T6] {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f), len(g)})
 
-	result := make([]Tuple7[A, B, C, D, E, F, G], 0, size)
+	result := make([]Tuple7[T0, T1, T2, T3, T4, T5, T6], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -244,28 +209,24 @@ func Zip7[A, B, C, D, E, F, G any](a []A, b []B, c []C, d []D, e []E, f []F, g [
 		_f, _ := Nth(f, index)
 		_g, _ := Nth(g, index)
 
-		result = append(result, Tuple7[A, B, C, D, E, F, G]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
-			E: _e,
-			F: _f,
-			G: _g,
+		result = append(result, Tuple7[T0, T1, T2, T3, T4, T5, T6]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
+			T4: _e,
+			T5: _f,
+			T6: _g,
 		})
 	}
 
 	return result
 }
 
-// Zip8 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip8[A, B, C, D, E, F, G, H any](a []A, b []B, c []C, d []D, e []E, f []F, g []G, h []H) []Tuple8[A, B, C, D, E, F, G, H] {
+func Zip8[T0, T1, T2, T3, T4, T5, T6, T7 any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6, h []T7) []Tuple8[T0, T1, T2, T3, T4, T5, T6, T7] {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f), len(g), len(h)})
 
-	result := make([]Tuple8[A, B, C, D, E, F, G, H], 0, size)
+	result := make([]Tuple8[T0, T1, T2, T3, T4, T5, T6, T7], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -277,29 +238,25 @@ func Zip8[A, B, C, D, E, F, G, H any](a []A, b []B, c []C, d []D, e []E, f []F, 
 		_g, _ := Nth(g, index)
 		_h, _ := Nth(h, index)
 
-		result = append(result, Tuple8[A, B, C, D, E, F, G, H]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
-			E: _e,
-			F: _f,
-			G: _g,
-			H: _h,
+		result = append(result, Tuple8[T0, T1, T2, T3, T4, T5, T6, T7]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
+			T4: _e,
+			T5: _f,
+			T6: _g,
+			T7: _h,
 		})
 	}
 
 	return result
 }
 
-// Zip9 creates a slice of grouped elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-// Play: https://go.dev/play/p/jujaA6GaJTp
-func Zip9[A, B, C, D, E, F, G, H, I any](a []A, b []B, c []C, d []D, e []E, f []F, g []G, h []H, i []I) []Tuple9[A, B, C, D, E, F, G, H, I] {
+func Zip9[T0, T1, T2, T3, T4, T5, T6, T7, T8 any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6, h []T7, i []T8) []Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8] {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f), len(g), len(h), len(i)})
 
-	result := make([]Tuple9[A, B, C, D, E, F, G, H, I], 0, size)
+	result := make([]Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8], 0, size)
 
 	for index := 0; index < size; index++ {
 		_a, _ := Nth(a, index)
@@ -312,26 +269,23 @@ func Zip9[A, B, C, D, E, F, G, H, I any](a []A, b []B, c []C, d []D, e []E, f []
 		_h, _ := Nth(h, index)
 		_i, _ := Nth(i, index)
 
-		result = append(result, Tuple9[A, B, C, D, E, F, G, H, I]{
-			A: _a,
-			B: _b,
-			C: _c,
-			D: _d,
-			E: _e,
-			F: _f,
-			G: _g,
-			H: _h,
-			I: _i,
+		result = append(result, Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8]{
+			T0: _a,
+			T1: _b,
+			T2: _c,
+			T3: _d,
+			T4: _e,
+			T5: _f,
+			T6: _g,
+			T7: _h,
+			T8: _i,
 		})
 	}
 
 	return result
 }
 
-// ZipBy2 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy2[A any, B any, Out any](a []A, b []B, iteratee func(a A, b B) Out) []Out {
+func ZipT1y2[T0 any, T1 any, Out any](a []T0, b []T1, iteratee func(a T0, b T1) Out) []Out {
 	size := Max([]int{len(a), len(b)})
 
 	result := make([]Out, 0, size)
@@ -346,10 +300,7 @@ func ZipBy2[A any, B any, Out any](a []A, b []B, iteratee func(a A, b B) Out) []
 	return result
 }
 
-// ZipBy3 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy3[A any, B any, C any, Out any](a []A, b []B, c []C, iteratee func(a A, b B, c C) Out) []Out {
+func ZipT1y3[T0 any, T1 any, T2 any, Out any](a []T0, b []T1, c []T2, iteratee func(a T0, b T1, c T2) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c)})
 
 	result := make([]Out, 0, size)
@@ -365,10 +316,7 @@ func ZipBy3[A any, B any, C any, Out any](a []A, b []B, c []C, iteratee func(a A
 	return result
 }
 
-// ZipBy4 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy4[A any, B any, C any, D any, Out any](a []A, b []B, c []C, d []D, iteratee func(a A, b B, c C, d D) Out) []Out {
+func ZipT1y4[T0 any, T1 any, T2 any, T3 any, Out any](a []T0, b []T1, c []T2, d []T3, iteratee func(a T0, b T1, c T2, d T3) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d)})
 
 	result := make([]Out, 0, size)
@@ -385,10 +333,7 @@ func ZipBy4[A any, B any, C any, D any, Out any](a []A, b []B, c []C, d []D, ite
 	return result
 }
 
-// ZipBy5 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy5[A any, B any, C any, D any, E any, Out any](a []A, b []B, c []C, d []D, e []E, iteratee func(a A, b B, c C, d D, e E) Out) []Out {
+func ZipT1y5[T0 any, T1 any, T2 any, T3 any, T4 any, Out any](a []T0, b []T1, c []T2, d []T3, e []T4, iteratee func(a T0, b T1, c T2, d T3, e T4) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e)})
 
 	result := make([]Out, 0, size)
@@ -406,10 +351,7 @@ func ZipBy5[A any, B any, C any, D any, E any, Out any](a []A, b []B, c []C, d [
 	return result
 }
 
-// ZipBy6 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy6[A any, B any, C any, D any, E any, F any, Out any](a []A, b []B, c []C, d []D, e []E, f []F, iteratee func(a A, b B, c C, d D, e E, f F) Out) []Out {
+func ZipT1y6[T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, Out any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, iteratee func(a T0, b T1, c T2, d T3, e T4, f T5) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f)})
 
 	result := make([]Out, 0, size)
@@ -428,10 +370,7 @@ func ZipBy6[A any, B any, C any, D any, E any, F any, Out any](a []A, b []B, c [
 	return result
 }
 
-// ZipBy7 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy7[A any, B any, C any, D any, E any, F any, G any, Out any](a []A, b []B, c []C, d []D, e []E, f []F, g []G, iteratee func(a A, b B, c C, d D, e E, f F, g G) Out) []Out {
+func ZipT1y7[T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any, Out any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6, iteratee func(a T0, b T1, c T2, d T3, e T4, f T5, g T6) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f)})
 
 	result := make([]Out, 0, size)
@@ -451,10 +390,7 @@ func ZipBy7[A any, B any, C any, D any, E any, F any, G any, Out any](a []A, b [
 	return result
 }
 
-// ZipBy8 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy8[A any, B any, C any, D any, E any, F any, G any, H any, Out any](a []A, b []B, c []C, d []D, e []E, f []F, g []G, h []H, iteratee func(a A, b B, c C, d D, e E, f F, g G, h H) Out) []Out {
+func ZipT1y8[T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any, T7 any, Out any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6, h []T7, iteratee func(a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f), len(g)})
 
 	result := make([]Out, 0, size)
@@ -475,10 +411,7 @@ func ZipBy8[A any, B any, C any, D any, E any, F any, G any, H any, Out any](a [
 	return result
 }
 
-// ZipBy9 creates a slice of transformed elements, the first of which contains the first elements
-// of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-// When collections have different size, the Tuple attributes are filled with zero value.
-func ZipBy9[A any, B any, C any, D any, E any, F any, G any, H any, I any, Out any](a []A, b []B, c []C, d []D, e []E, f []F, g []G, h []H, i []I, iteratee func(a A, b B, c C, d D, e E, f F, g G, h H, i I) Out) []Out {
+func ZipT1y9[T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any, T7 any, T8 any, Out any](a []T0, b []T1, c []T2, d []T3, e []T4, f []T5, g []T6, h []T7, i []T8, iteratee func(a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7, i T8) Out) []Out {
 	size := Max([]int{len(a), len(b), len(c), len(d), len(e), len(f), len(g), len(h), len(i)})
 
 	result := make([]Out, 0, size)
@@ -500,196 +433,170 @@ func ZipBy9[A any, B any, C any, D any, E any, F any, G any, H any, I any, Out a
 	return result
 }
 
-// Unzip2 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip2[A, B any](tuples []Tuple2[A, B]) ([]A, []B) {
+func Unzip2[T0, T1 any](tuples []Tuple2[T0, T1]) ([]T0, []T1) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
 	}
 
 	return r1, r2
 }
 
-// Unzip3 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip3[A, B, C any](tuples []Tuple3[A, B, C]) ([]A, []B, []C) {
+func Unzip3[T0, T1, T2 any](tuples []Tuple3[T0, T1, T2]) ([]T0, []T1, []T2) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
 	}
 
 	return r1, r2, r3
 }
 
-// Unzip4 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip4[A, B, C, D any](tuples []Tuple4[A, B, C, D]) ([]A, []B, []C, []D) {
+func Unzip4[T0, T1, T2, T3 any](tuples []Tuple4[T0, T1, T2, T3]) ([]T0, []T1, []T2, []T3) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
 	}
 
 	return r1, r2, r3, r4
 }
 
-// Unzip5 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip5[A, B, C, D, E any](tuples []Tuple5[A, B, C, D, E]) ([]A, []B, []C, []D, []E) {
+func Unzip5[T0, T1, T2, T3, T4 any](tuples []Tuple5[T0, T1, T2, T3, T4]) ([]T0, []T1, []T2, []T3, []T4) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
-		r5 = append(r5, tuples[i].E)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
+		r5 = append(r5, tuples[i].T4)
 	}
 
 	return r1, r2, r3, r4, r5
 }
 
-// Unzip6 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip6[A, B, C, D, E, F any](tuples []Tuple6[A, B, C, D, E, F]) ([]A, []B, []C, []D, []E, []F) {
+func Unzip6[T0, T1, T2, T3, T4, T5 any](tuples []Tuple6[T0, T1, T2, T3, T4, T5]) ([]T0, []T1, []T2, []T3, []T4, []T5) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
-		r5 = append(r5, tuples[i].E)
-		r6 = append(r6, tuples[i].F)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
+		r5 = append(r5, tuples[i].T4)
+		r6 = append(r6, tuples[i].T5)
 	}
 
 	return r1, r2, r3, r4, r5, r6
 }
 
-// Unzip7 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip7[A, B, C, D, E, F, G any](tuples []Tuple7[A, B, C, D, E, F, G]) ([]A, []B, []C, []D, []E, []F, []G) {
+func Unzip7[T0, T1, T2, T3, T4, T5, T6 any](tuples []Tuple7[T0, T1, T2, T3, T4, T5, T6]) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
-		r5 = append(r5, tuples[i].E)
-		r6 = append(r6, tuples[i].F)
-		r7 = append(r7, tuples[i].G)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
+		r5 = append(r5, tuples[i].T4)
+		r6 = append(r6, tuples[i].T5)
+		r7 = append(r7, tuples[i].T6)
 	}
 
 	return r1, r2, r3, r4, r5, r6, r7
 }
 
-// Unzip8 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip8[A, B, C, D, E, F, G, H any](tuples []Tuple8[A, B, C, D, E, F, G, H]) ([]A, []B, []C, []D, []E, []F, []G, []H) {
+func Unzip8[T0, T1, T2, T3, T4, T5, T6, T7 any](tuples []Tuple8[T0, T1, T2, T3, T4, T5, T6, T7]) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6, []T7) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
-	r8 := make([]H, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
+	r8 := make([]T7, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
-		r5 = append(r5, tuples[i].E)
-		r6 = append(r6, tuples[i].F)
-		r7 = append(r7, tuples[i].G)
-		r8 = append(r8, tuples[i].H)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
+		r5 = append(r5, tuples[i].T4)
+		r6 = append(r6, tuples[i].T5)
+		r7 = append(r7, tuples[i].T6)
+		r8 = append(r8, tuples[i].T7)
 	}
 
 	return r1, r2, r3, r4, r5, r6, r7, r8
 }
 
-// Unzip9 accepts an array of grouped elements and creates an array regrouping the elements
-// to their pre-zip configuration.
-// Play: https://go.dev/play/p/ciHugugvaAW
-func Unzip9[A, B, C, D, E, F, G, H, I any](tuples []Tuple9[A, B, C, D, E, F, G, H, I]) ([]A, []B, []C, []D, []E, []F, []G, []H, []I) {
+func Unzip9[T0, T1, T2, T3, T4, T5, T6, T7, T8 any](tuples []Tuple9[T0, T1, T2, T3, T4, T5, T6, T7, T8]) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6, []T7, []T8) {
 	size := len(tuples)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
-	r8 := make([]H, 0, size)
-	r9 := make([]I, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
+	r8 := make([]T7, 0, size)
+	r9 := make([]T8, 0, size)
 
 	for i := range tuples {
-		r1 = append(r1, tuples[i].A)
-		r2 = append(r2, tuples[i].B)
-		r3 = append(r3, tuples[i].C)
-		r4 = append(r4, tuples[i].D)
-		r5 = append(r5, tuples[i].E)
-		r6 = append(r6, tuples[i].F)
-		r7 = append(r7, tuples[i].G)
-		r8 = append(r8, tuples[i].H)
-		r9 = append(r9, tuples[i].I)
+		r1 = append(r1, tuples[i].T0)
+		r2 = append(r2, tuples[i].T1)
+		r3 = append(r3, tuples[i].T2)
+		r4 = append(r4, tuples[i].T3)
+		r5 = append(r5, tuples[i].T4)
+		r6 = append(r6, tuples[i].T5)
+		r7 = append(r7, tuples[i].T6)
+		r8 = append(r8, tuples[i].T7)
+		r9 = append(r9, tuples[i].T8)
 	}
 
 	return r1, r2, r3, r4, r5, r6, r7, r8, r9
 }
 
-// UnzipBy2 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy2[In any, A any, B any](items []In, iteratee func(In) (a A, b B)) ([]A, []B) {
+func UnzipT1y2[T8n any, T0 any, T1 any](items []T8n, iteratee func(T8n) (a T0, b T1)) ([]T0, []T1) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
 
 	for i := range items {
 		a, b := iteratee(items[i])
@@ -700,13 +607,11 @@ func UnzipBy2[In any, A any, B any](items []In, iteratee func(In) (a A, b B)) ([
 	return r1, r2
 }
 
-// UnzipBy3 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy3[In any, A any, B any, C any](items []In, iteratee func(In) (a A, b B, c C)) ([]A, []B, []C) {
+func UnzipT1y3[T8n any, T0 any, T1 any, T2 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2)) ([]T0, []T1, []T2) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
 
 	for i := range items {
 		a, b, c := iteratee(items[i])
@@ -718,14 +623,12 @@ func UnzipBy3[In any, A any, B any, C any](items []In, iteratee func(In) (a A, b
 	return r1, r2, r3
 }
 
-// UnzipBy4 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy4[In any, A any, B any, C any, D any](items []In, iteratee func(In) (a A, b B, c C, d D)) ([]A, []B, []C, []D) {
+func UnzipT1y4[T8n any, T0 any, T1 any, T2 any, T3 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3)) ([]T0, []T1, []T2, []T3) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
 
 	for i := range items {
 		a, b, c, d := iteratee(items[i])
@@ -738,15 +641,13 @@ func UnzipBy4[In any, A any, B any, C any, D any](items []In, iteratee func(In) 
 	return r1, r2, r3, r4
 }
 
-// UnzipBy5 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy5[In any, A any, B any, C any, D any, E any](items []In, iteratee func(In) (a A, b B, c C, d D, e E)) ([]A, []B, []C, []D, []E) {
+func UnzipT1y5[T8n any, T0 any, T1 any, T2 any, T3 any, T4 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3, e T4)) ([]T0, []T1, []T2, []T3, []T4) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
 
 	for i := range items {
 		a, b, c, d, e := iteratee(items[i])
@@ -760,16 +661,14 @@ func UnzipBy5[In any, A any, B any, C any, D any, E any](items []In, iteratee fu
 	return r1, r2, r3, r4, r5
 }
 
-// UnzipBy6 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy6[In any, A any, B any, C any, D any, E any, F any](items []In, iteratee func(In) (a A, b B, c C, d D, e E, f F)) ([]A, []B, []C, []D, []E, []F) {
+func UnzipT1y6[T8n any, T0 any, T1 any, T2 any, T3 any, T4 any, T5 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3, e T4, f T5)) ([]T0, []T1, []T2, []T3, []T4, []T5) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
 
 	for i := range items {
 		a, b, c, d, e, f := iteratee(items[i])
@@ -784,17 +683,15 @@ func UnzipBy6[In any, A any, B any, C any, D any, E any, F any](items []In, iter
 	return r1, r2, r3, r4, r5, r6
 }
 
-// UnzipBy7 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy7[In any, A any, B any, C any, D any, E any, F any, G any](items []In, iteratee func(In) (a A, b B, c C, d D, e E, f F, g G)) ([]A, []B, []C, []D, []E, []F, []G) {
+func UnzipT1y7[T8n any, T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3, e T4, f T5, g T6)) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
 
 	for i := range items {
 		a, b, c, d, e, f, g := iteratee(items[i])
@@ -810,18 +707,16 @@ func UnzipBy7[In any, A any, B any, C any, D any, E any, F any, G any](items []I
 	return r1, r2, r3, r4, r5, r6, r7
 }
 
-// UnzipBy8 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy8[In any, A any, B any, C any, D any, E any, F any, G any, H any](items []In, iteratee func(In) (a A, b B, c C, d D, e E, f F, g G, h H)) ([]A, []B, []C, []D, []E, []F, []G, []H) {
+func UnzipT1y8[T8n any, T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any, T7 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7)) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6, []T7) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
-	r8 := make([]H, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
+	r8 := make([]T7, 0, size)
 
 	for i := range items {
 		a, b, c, d, e, f, g, h := iteratee(items[i])
@@ -838,19 +733,17 @@ func UnzipBy8[In any, A any, B any, C any, D any, E any, F any, G any, H any](it
 	return r1, r2, r3, r4, r5, r6, r7, r8
 }
 
-// UnzipBy9 iterates over a collection and creates an array regrouping the elements
-// to their pre-zip configuration.
-func UnzipBy9[In any, A any, B any, C any, D any, E any, F any, G any, H any, I any](items []In, iteratee func(In) (a A, b B, c C, d D, e E, f F, g G, h H, i I)) ([]A, []B, []C, []D, []E, []F, []G, []H, []I) {
+func UnzipT1y9[T8n any, T0 any, T1 any, T2 any, T3 any, T4 any, T5 any, T6 any, T7 any, T8 any](items []T8n, iteratee func(T8n) (a T0, b T1, c T2, d T3, e T4, f T5, g T6, h T7, i T8)) ([]T0, []T1, []T2, []T3, []T4, []T5, []T6, []T7, []T8) {
 	size := len(items)
-	r1 := make([]A, 0, size)
-	r2 := make([]B, 0, size)
-	r3 := make([]C, 0, size)
-	r4 := make([]D, 0, size)
-	r5 := make([]E, 0, size)
-	r6 := make([]F, 0, size)
-	r7 := make([]G, 0, size)
-	r8 := make([]H, 0, size)
-	r9 := make([]I, 0, size)
+	r1 := make([]T0, 0, size)
+	r2 := make([]T1, 0, size)
+	r3 := make([]T2, 0, size)
+	r4 := make([]T3, 0, size)
+	r5 := make([]T4, 0, size)
+	r6 := make([]T5, 0, size)
+	r7 := make([]T6, 0, size)
+	r8 := make([]T7, 0, size)
+	r9 := make([]T8, 0, size)
 
 	for i := range items {
 		a, b, c, d, e, f, g, h, i := iteratee(items[i])

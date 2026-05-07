@@ -1,0 +1,36 @@
+syntax = "proto3";
+package pb;
+option go_package = "github.com/tqhuy-dev/gore/pb";
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+service HealthCheckService {
+  rpc ReadinessCheck (ReadinessRequest) returns (ReadinessResponse) {
+    option (google.api.http) = {
+      get:  "/v1/readiness"
+    };
+  };
+
+  rpc SamplingRequest (SampRequest) returns (SamplingReturn) {
+    option (google.api.http) = {
+      get:  "/v1/sampling"
+    };
+  };
+
+}
+
+message ReadinessRequest {
+
+}
+
+message ReadinessResponse {
+  string version = 1;
+}
+
+message SamplingReturn {
+  int32 data =1 ;
+}
+
+message SampRequest {
+  int32 data = 1 [(validate.rules).int32 = {gt:0}];
+}

@@ -83,3 +83,13 @@ func Duration10[A, B, C, D, E, F, G, H, I, J any](cb func() (A, B, C, D, E, F, G
 	a, b, c, d, e, f, g, h, i, j := cb()
 	return a, b, c, d, e, f, g, h, i, j, time.Since(start)
 }
+
+// StartDayOfTime return start the day of time
+func StartDayOfTime(data time.Time) time.Time {
+	return time.Date(data.Year(), data.Month(), data.Day(), 0, 0, 0, 0, time.UTC)
+}
+
+// EndDayOfTime return end the day of time
+func EndDayOfTime(data time.Time) time.Time {
+	return time.Date(data.Year(), data.Month(), data.Day(), 23, 59, 59, 0, time.UTC)
+}
